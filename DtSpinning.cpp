@@ -25,8 +25,8 @@ int DtSpinning::getCantBicicletas(){
 DtSpinning::DtSpinning() {
 }
 
-DtSpinning::DtSpinning(int id, string nombre, Turno turno, int cantBicicletas){
-    DtClase(id,nombre,turno);
+DtSpinning::DtSpinning(int id, string nombre, Turno turno, int cantBicicletas):
+    DtClase(id,nombre,turno){
     this->cantBicicletas = cantBicicletas;
 }
 DtSpinning::DtSpinning(const DtSpinning& orig) {
@@ -35,15 +35,7 @@ DtSpinning::DtSpinning(const DtSpinning& orig) {
 DtSpinning::~DtSpinning() {
 }
 
-ostream& operator<<(ostream& output, DtSpinning* & clase){
- std::string cadena = "";
- 
-    std::stringstream out;
-    out << clase->getId();
-    cadena=out.str();
-    output <<"\nID Clase: "<<cadena
-            <<"\nNombre: "<<clase->getNombre()
-            <<"\nTurno: "<<clase->getTurno()
-            <<"\nCantidad Bicicletas: "<<clase->getCantBicicletas();
-    return output;
+ostream& operator<<(ostream& os, const DtSpinning& spin){
+    os << "Cantidad de bicicletas: " << spin.cantBicicletas;
+    return os;
 }

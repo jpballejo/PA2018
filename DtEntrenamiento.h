@@ -24,7 +24,7 @@ public:
     void setEnRambla(bool);
     
     bool getEnRambla();
-     friend ostream &operator<<(ostream&,DtEntrenamiento* &c);
+     friend ostream& operator<<(ostream&,const DtEntrenamiento &);
 
 private:
     bool enRambla;

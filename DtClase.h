@@ -22,7 +22,7 @@ public:
     DtClase(int,string, Turno);
     DtClase(const DtClase& orig);
     virtual ~DtClase();
-    
+    friend ostream& operator<<(ostream&, const DtClase&);
     void setId(int);
     void setNombre(string);
     void SetTurno(Turno);
