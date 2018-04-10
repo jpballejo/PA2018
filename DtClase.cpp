@@ -76,9 +76,10 @@ ostream& operator<<(ostream& os, const DtClase& clase){
     
     if(dtSpin) {
         os << *dtSpin;
-    } else {
+    } 
         const DtEntrenamiento* dtEntr = dynamic_cast<const DtEntrenamiento*> (&clase);
-        os << *dtEntr;
-    }
+        if(dtEntr){
+        os << *dtEntr;}
+    
     return os;
 }
