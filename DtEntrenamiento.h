@@ -21,10 +21,12 @@ public:
     DtEntrenamiento(const DtEntrenamiento& orig);
     virtual ~DtEntrenamiento();
     
-    void setEnRambla(bool);
-    
+    int getId();
+    string getNombre();
+    Turno getTurno();    
     bool getEnRambla();
-     friend ostream& operator<<(ostream&,const DtEntrenamiento &);
+    
+    friend ostream& operator<<(ostream&,const DtEntrenamiento &);
 
 private:
     bool enRambla;

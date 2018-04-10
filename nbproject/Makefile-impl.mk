@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=ProgramacionAvanzada-master
+PROJECTNAME=PA2018
 
 # Active Configuration
 DEFAULTCONF=Debug

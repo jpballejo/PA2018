@@ -49,7 +49,7 @@ void agregarSocio(string,string);
 bool existeSocio(string);
 void agregarInscripcion(string, int, Fecha*);
 void pedirDatosClase();
-void agregarClase(DtClase&);
+//void agregarClase(DtClase&);
 bool existeClase(int);
 void inscribirSocio();
 void mostrarInscripciones();
@@ -59,7 +59,7 @@ Clase* existeClasep(int);
 void borrarInscripcion(string, int);
 DtSocio** obtenerInfoSociosPorClase(int,int&);
 DtClase& obtenerClase(int);
-Clase* tipoClase(DtClase& clase);
+//Clase* tipoClase(DtClase& clase);
 
 int main(int argc, char** argv) {
 
@@ -156,7 +156,7 @@ void mostrarClaseS (){
                     throw std::invalid_argument("No existe la clase");
                 
                 clase = &obtenerClase(idClase);
-                cout<<*clase;
+//                cout<<*clase;
    }catch (std::invalid_argument& ia){cout << ia.what();}
                 
 }
@@ -168,17 +168,16 @@ Fecha* armarFecha() {
     cout << "Ingrese la fecha: \n";
     cout << "Ingrese dia: \n";
     cin>>dia;
-    if (dia < 1 && dia > 31)
-    {}
-    else {throw invalid_argument("El dia no es correcto");}
+    if (dia < 1 && dia > 31){
+        throw invalid_argument("El dia no es correcto");}
     cout << "Ingrese el mes: \n";
     cin>>mes;
-    if(mes<1 && mes >12){}
-    else throw invalid_argument("El mes no es correcto");
+    if(mes<1 && mes >12)
+        throw invalid_argument("El mes no es correcto");
     cout << "Ingrese el año: \n";
     cin>>anio;
-    if (anio<1900 && anio>2018){}
-    else throw invalid_argument("Año incorrecto");
+    if (anio<1900 && anio>2018)
+        throw invalid_argument("Año incorrecto");
     Fecha * fech = new Fecha(dia, mes, anio);
 
     return fech;
@@ -336,16 +335,16 @@ void pedirDatosClase() {
         int id, optT, cantBicicletas;
         string nombre;
         bool enRambla;
-        DtClase clase;
+        Clase* claseMad;
         Turno t;
         cout << "\nIngrese ID de la clase\n";
         cin>>id;
         if (existeClase(id))
             throw std::invalid_argument("El ID de la clase ya existe");
-        clase.setId(id);
+//        clase.setId(id);
         cout << "\nIngrese nombre de la clase\n";
         cin>>nombre;
-        clase.setNombre(nombre);
+//        clase.setNombre(nombre);
         do {
             cout << "\nIngrese turno de la clase:\n1- Manana\n2- Tarde\n3- Noche\n";
             cin>>optT;
@@ -363,47 +362,73 @@ void pedirDatosClase() {
                     break;
             }
         } while (optT != 1 && optT != 2 && optT != 3);
-        clase.SetTurno(t);
-        agregarClase(clase);
-    } catch (std::invalid_argument &ia) {
-        cout << ia.what() << endl;
-    }
-}
-
-void agregarClase(DtClase& clase) {
-  arreglo_clases[CantClases] = tipoClase(clase);
-            CantClases++;
-}
-
-Clase* tipoClase(DtClase& clase){
-   int optT, cantBicicletas;
-    do {
+//        clase.SetTurno(t);
+        
+        DtClase * clase = new DtClase(id,nombre,t);
+         do {
         cout << "\nQue tipo de clase desea crear?\n1- Spinning\n2- Entrenamiento\n";
         cin>>optT;
         if (optT == 1) {
             cout << "\nIngrese la cantidad de bicicletas\n";
             cin>>cantBicicletas;
-            Spinning* claseSpinning = new Spinning(clase.getId(), clase.getNombre(), clase.getTurno(), cantBicicletas);
-            return claseSpinning;
+            claseMad = new Spinning(clase->getId(), clase->getNombre(), clase->getTurno(), cantBicicletas);
+            //return claseSpinning;
         } else if (optT == 2) {
             cout << "El entrenamiento es en rambla?\n1- Si\n2- No\n";
             cin>>optT;
             if (optT == 1) {
-                Entrenamiento* claseEntrenamiento = new Entrenamiento(clase.getId(), clase.getNombre(), clase.getTurno(), true);
-                return claseEntrenamiento;
+                claseMad = new Entrenamiento(clase->getId(), clase->getNombre(), clase->getTurno(), true);
+                //return claseEntrenamiento;
             } else {
-                Entrenamiento* claseEntrenamiento = new Entrenamiento(clase.getId(), clase.getNombre(), clase.getTurno(), false);
-             return claseEntrenamiento;
+                claseMad = new Entrenamiento(clase->getId(), clase->getNombre(), clase->getTurno(), false);
+             //return claseEntrenamiento;
             }
         } else {
             cout << "\nOpción incorrecta\n";
         }
     } while (optT != 1 && optT != 2);
-
-
-
-
+        arreglo_clases[CantClases] = claseMad;
+            CantClases++;
+        //agregarClase(clase);
+    } catch (std::invalid_argument &ia) {
+        cout << ia.what() << endl;
+    }
 }
+
+//void agregarClase(DtClase& clase) {
+//  arreglo_clases[CantClases] = tipoClase(clase);
+//            CantClases++;
+//}
+
+//Clase* tipoClase(DtClase& clase){
+//   int optT, cantBicicletas;
+//    do {
+//        cout << "\nQue tipo de clase desea crear?\n1- Spinning\n2- Entrenamiento\n";
+//        cin>>optT;
+//        if (optT == 1) {
+//            cout << "\nIngrese la cantidad de bicicletas\n";
+//            cin>>cantBicicletas;
+//            Spinning* claseSpinning = new Spinning(clase.getId(), clase.getNombre(), clase.getTurno(), cantBicicletas);
+//            return claseSpinning;
+//        } else if (optT == 2) {
+//            cout << "El entrenamiento es en rambla?\n1- Si\n2- No\n";
+//            cin>>optT;
+//            if (optT == 1) {
+//                Entrenamiento* claseEntrenamiento = new Entrenamiento(clase.getId(), clase.getNombre(), clase.getTurno(), true);
+//                return claseEntrenamiento;
+//            } else {
+//                Entrenamiento* claseEntrenamiento = new Entrenamiento(clase.getId(), clase.getNombre(), clase.getTurno(), false);
+//             return claseEntrenamiento;
+//            }
+//        } else {
+//            cout << "\nOpción incorrecta\n";
+//        }
+//    } while (optT != 1 && optT != 2);
+//
+//
+//
+//
+//}
 void datosSocio (){
  string ci, nombre;
  try {

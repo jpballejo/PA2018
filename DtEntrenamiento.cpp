@@ -13,8 +13,20 @@
 
 #include "DtEntrenamiento.h"
 #include <sstream>
-void DtEntrenamiento::setEnRambla(bool enRambla){
-    this->enRambla = enRambla;
+//void DtEntrenamiento::setEnRambla(bool enRambla){
+//    this->enRambla = enRambla;
+//}
+
+int DtEntrenamiento::getId(){
+    return DtClase::getId();
+}
+
+string DtEntrenamiento::getNombre(){
+    return DtClase::getNombre();
+}
+
+Turno DtEntrenamiento::getTurno(){
+    return DtClase::getTurno();
 }
 
 bool DtEntrenamiento::getEnRambla(){
@@ -31,15 +43,17 @@ DtEntrenamiento::DtEntrenamiento(const DtEntrenamiento& orig) {
 DtEntrenamiento::~DtEntrenamiento() {
 }
 
-ostream& operator<<(ostream& os, const DtEntrenamiento& entrena){
+ostream& operator<<(ostream& os, DtEntrenamiento& entrena){
     string r;
-    if(entrena.enRambla){
+    if(entrena.getEnRambla()){
         r="Si";
     }else {
         r="No";
     }
-    
-    os <<"En Rambla: " << r << endl;
+    os <<"\nID Empresa: "<<entrena.getId()
+            <<"\nNombre: "<<entrena.getNombre()
+            <<"\nTurno: "<<entrena.getTurno()
+            <<"\nEn Rambla: " << r << endl;
     
     return os;
 }

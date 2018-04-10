@@ -14,8 +14,19 @@
 #include "DtSpinning.h"
 #include<sstream>
 
-void DtSpinning::setCantBicicletas(int cantBicicletas){
-    this->cantBicicletas = cantBicicletas;
+//void DtSpinning::setCantBicicletas(int cantBicicletas){
+//    this->cantBicicletas = cantBicicletas;
+//}
+int DtSpinning::getId(){
+    return DtClase::getId();
+}
+
+string DtSpinning::getNombre(){
+    return DtClase::getNombre();
+}
+
+Turno DtSpinning::getTurno(){
+    return DtClase::getTurno();
 }
 
 int DtSpinning::getCantBicicletas(){
@@ -35,7 +46,12 @@ DtSpinning::DtSpinning(const DtSpinning& orig) {
 DtSpinning::~DtSpinning() {
 }
 
-ostream& operator<<(ostream& os, const DtSpinning& spin){
-    os << "Cantidad de bicicletas: " << spin.cantBicicletas;
+ostream& operator<<(ostream& os,  DtSpinning& spin){
+   
+    os <<"\nID Empresa: "<<spin.getId()
+            <<"\nNombre: "<<spin.getNombre()
+            <<"\nTurno: "<<spin.getTurno()
+            << "Cantidad de bicicletas: " << spin.getCantBicicletas();
+    
     return os;
 }

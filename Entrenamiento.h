@@ -21,17 +21,17 @@ class Entrenamiento : public Clase {
 private:
     bool enRambla;
 public:
-    //Entrenamiento(int, string, Turno, bool);
+    
     Entrenamiento(int,string,Turno,bool);
     Entrenamiento();
-    //Entrenamiento(const Entrenamiento& orig);
+    Entrenamiento(const Entrenamiento& orig);
     virtual ~Entrenamiento();
     /*Getters*/
     
     bool getEnRambla();
     /*Setters*/
     
-    void setEnRambla(bool);
+    //void setEnRambla(bool);
     /*Extra functions belonging to this class*/
     
     int cupo();

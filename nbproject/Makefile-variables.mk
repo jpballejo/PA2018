@@ -9,11 +9,11 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=programacionavanzada-master
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/programacionavanzada-master
+CND_ARTIFACT_NAME_Debug=pa2018
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/pa2018
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=programacionavanzada-master.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/programacionavanzada-master.tar
+CND_PACKAGE_NAME_Debug=pa2018.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/pa2018.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows

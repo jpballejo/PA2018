@@ -21,8 +21,10 @@ public:
     DtSpinning(const DtSpinning& orig);
     virtual ~DtSpinning();
     
-    void setCantBicicletas(int);
     
+    int getId();
+    string getNombre();
+    Turno getTurno();
     int getCantBicicletas();
      friend ostream& operator<<(ostream&, const DtSpinning&);
 private:
