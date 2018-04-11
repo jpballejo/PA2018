@@ -23,10 +23,11 @@ public:
     
     int getId();
     string getNombre();
-    Turno getTurno();    
+    Turno getTurno();
+    string getTurnoS();    
     bool getEnRambla();
     
-    friend ostream& operator<<(ostream&,const DtEntrenamiento &);
+    friend ostream& operator<<(ostream&, DtEntrenamiento* &);
 
 private:
     bool enRambla;

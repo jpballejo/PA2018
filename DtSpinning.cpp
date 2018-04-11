@@ -28,6 +28,9 @@ string DtSpinning::getNombre(){
 Turno DtSpinning::getTurno(){
     return DtClase::getTurno();
 }
+string DtSpinning::getTurnoS(){
+    return DtClase::getTurnoS();
+}
 
 int DtSpinning::getCantBicicletas(){
     return this->cantBicicletas;
@@ -46,12 +49,12 @@ DtSpinning::DtSpinning(const DtSpinning& orig) {
 DtSpinning::~DtSpinning() {
 }
 
-ostream& operator<<(ostream& os,  DtSpinning& spin){
+ostream& operator<<(ostream& os,  DtSpinning*& spin){
    
-    os <<"\nID Empresa: "<<spin.getId()
-            <<"\nNombre: "<<spin.getNombre()
-            <<"\nTurno: "<<spin.getTurno()
-            << "Cantidad de bicicletas: " << spin.getCantBicicletas();
+    os <<"\nID Empresa: "<<spin->getId()
+            <<"\nNombre: "<<spin->getNombre()
+            <<"\nTurno: "<<spin->getTurnoS() 
+            << "\nCantidad de bicicletas: " << spin->getCantBicicletas()<< endl;
     
     return os;
 }

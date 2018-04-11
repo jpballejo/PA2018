@@ -24,6 +24,9 @@ int DtEntrenamiento::getId(){
 string DtEntrenamiento::getNombre(){
     return DtClase::getNombre();
 }
+string DtEntrenamiento::getTurnoS(){
+    return DtClase::getTurnoS();
+}
 
 Turno DtEntrenamiento::getTurno(){
     return DtClase::getTurno();
@@ -43,16 +46,16 @@ DtEntrenamiento::DtEntrenamiento(const DtEntrenamiento& orig) {
 DtEntrenamiento::~DtEntrenamiento() {
 }
 
-ostream& operator<<(ostream& os, DtEntrenamiento& entrena){
+ostream& operator<<(ostream& os, DtEntrenamiento*& entrena){
     string r;
-    if(entrena.getEnRambla()){
+    if(entrena->getEnRambla()){
         r="Si";
     }else {
         r="No";
     }
-    os <<"\nID Empresa: "<<entrena.getId()
-            <<"\nNombre: "<<entrena.getNombre()
-            <<"\nTurno: "<<entrena.getTurno()
+    os <<"\nID Empresa: "<<entrena->getId()
+            <<"\nNombre: "<<entrena->getNombre()
+            <<"\nTurno: "<<entrena->getTurnoS()
             <<"\nEn Rambla: " << r << endl;
     
     return os;

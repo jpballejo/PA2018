@@ -156,7 +156,11 @@ void mostrarClaseS (){
             throw std::invalid_argument("No existe la clase");
 
         clase = &obtenerClase(idClase);
-                cout<<clase;
+        if (DtSpinning* cla = dynamic_cast <DtSpinning *>(clase))
+                cout<<cla;
+        if (DtEntrenamiento* cla = dynamic_cast <DtEntrenamiento *>(clase))
+                cout<<cla;
+              
    }catch (std::invalid_argument& ia){cout << ia.what();}
                 
 }

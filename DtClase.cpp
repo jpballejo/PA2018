@@ -12,8 +12,8 @@
  */
 #include<iostream>
 #include "DtClase.h"
-#include "DtSpinning.h"
-#include "DtEntrenamiento.h"
+//#include "DtSpinning.h"
+//#include "DtEntrenamiento.h"
 using namespace std;
 
 //void DtClase::setId(int id){
@@ -35,9 +35,19 @@ int DtClase::getId(){
 string DtClase::getNombre(){
     return this->nombre;
 }
-
 Turno DtClase::getTurno(){
     return this->turno;
+}
+
+string  DtClase::getTurnoS(){
+    switch(this->turno){
+        case Manana: 
+            return "Manana"; break;
+        case Tarde: 
+            return "Tarde"; break;
+        case Noche: 
+            return "Noche"; break;
+    }
 }
 
 DtClase::DtClase(int id, string nombre, Turno turno){

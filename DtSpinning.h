@@ -25,8 +25,9 @@ public:
     int getId();
     string getNombre();
     Turno getTurno();
+    string getTurnoS();
     int getCantBicicletas();
-     friend ostream& operator<<(ostream&, const DtSpinning&);
+    friend ostream& operator<<(ostream&,  DtSpinning*&);
 private:
     int cantBicicletas;
 };
