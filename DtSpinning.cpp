@@ -49,12 +49,12 @@ DtSpinning::DtSpinning(const DtSpinning& orig) {
 DtSpinning::~DtSpinning() {
 }
 
+
 ostream& operator<<(ostream& os,  DtSpinning*& spin){
    
     os <<"\nID Empresa: "<<spin->getId()
             <<"\nNombre: "<<spin->getNombre()
             <<"\nTurno: "<<spin->getTurnoS() 
             << "\nCantidad de bicicletas: " << spin->getCantBicicletas()<< endl;
-    
     return os;
 }

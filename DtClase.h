@@ -22,11 +22,16 @@ public:
     DtClase(int,string, Turno);
     DtClase(const DtClase& orig);
     virtual ~DtClase();
+
     friend ostream& operator<<(ostream&, DtClase *&);
     virtual int getId();
     virtual string getNombre();
     virtual string getTurnoS();
+
     virtual Turno getTurno();
+    
+
+    
 private:
     int id;
     string nombre;

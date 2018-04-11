@@ -46,6 +46,7 @@ DtEntrenamiento::DtEntrenamiento(const DtEntrenamiento& orig) {
 DtEntrenamiento::~DtEntrenamiento() {
 }
 
+
 ostream& operator<<(ostream& os, DtEntrenamiento*& entrena){
     string r;
     if(entrena->getEnRambla()){
@@ -53,6 +54,7 @@ ostream& operator<<(ostream& os, DtEntrenamiento*& entrena){
     }else {
         r="No";
     }
+
     os <<"\nID Empresa: "<<entrena->getId()
             <<"\nNombre: "<<entrena->getNombre()
             <<"\nTurno: "<<entrena->getTurnoS()
