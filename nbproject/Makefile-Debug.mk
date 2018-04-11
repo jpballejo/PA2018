@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-Linux
-CND_DLIB_EXT=so
+CND_PLATFORM=Cygwin-Windows
+CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -66,63 +66,63 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pa2018
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pa2018.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pa2018: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pa2018.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pa2018 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Clase.o: Clase.cpp 
+${OBJECTDIR}/Clase.o: Clase.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Clase.o Clase.cpp
 
-${OBJECTDIR}/DtClase.o: DtClase.cpp 
+${OBJECTDIR}/DtClase.o: DtClase.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DtClase.o DtClase.cpp
 
-${OBJECTDIR}/DtEntrenamiento.o: DtEntrenamiento.cpp 
+${OBJECTDIR}/DtEntrenamiento.o: DtEntrenamiento.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DtEntrenamiento.o DtEntrenamiento.cpp
 
-${OBJECTDIR}/DtSocio.o: DtSocio.cpp 
+${OBJECTDIR}/DtSocio.o: DtSocio.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DtSocio.o DtSocio.cpp
 
-${OBJECTDIR}/DtSpinning.o: DtSpinning.cpp 
+${OBJECTDIR}/DtSpinning.o: DtSpinning.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DtSpinning.o DtSpinning.cpp
 
-${OBJECTDIR}/Entrenamiento.o: Entrenamiento.cpp 
+${OBJECTDIR}/Entrenamiento.o: Entrenamiento.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Entrenamiento.o Entrenamiento.cpp
 
-${OBJECTDIR}/Fecha.o: Fecha.cpp 
+${OBJECTDIR}/Fecha.o: Fecha.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Fecha.o Fecha.cpp
 
-${OBJECTDIR}/Inscripcion.o: Inscripcion.cpp 
+${OBJECTDIR}/Inscripcion.o: Inscripcion.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Inscripcion.o Inscripcion.cpp
 
-${OBJECTDIR}/Socio.o: Socio.cpp 
+${OBJECTDIR}/Socio.o: Socio.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Socio.o Socio.cpp
 
-${OBJECTDIR}/Spinning.o: Spinning.cpp 
+${OBJECTDIR}/Spinning.o: Spinning.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Spinning.o Spinning.cpp
 
-${OBJECTDIR}/main.o: main.cpp 
+${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
@@ -133,7 +133,6 @@ ${OBJECTDIR}/main.o: main.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/pa2018
 
 # Subprojects
 .clean-subprojects:

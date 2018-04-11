@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=GNU-Linux
-CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
+CND_PLATFORM_Debug=Cygwin-Windows
+CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
 CND_ARTIFACT_NAME_Debug=pa2018
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/pa2018
-CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/pa2018
+CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
 CND_PACKAGE_NAME_Debug=pa2018.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/pa2018.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/pa2018.tar
 # Release configuration
-CND_PLATFORM_Release=MinGW-Windows
-CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=programacionavanzada-master
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/programacionavanzada-master
-CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=programacionavanzada-master.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/programacionavanzada-master.tar
+CND_PLATFORM_Release=Cygwin-Windows
+CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
+CND_ARTIFACT_NAME_Release=pa2018
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/pa2018
+CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
+CND_PACKAGE_NAME_Release=pa2018.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/pa2018.tar
 #
 # include compiler specific variables
 #

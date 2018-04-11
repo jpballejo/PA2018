@@ -49,7 +49,7 @@ public:
     void setInscripcion(Inscripcion * inscripcion);
     /*Extra functions belonging to this class*/
     virtual int cupo() = 0;
-
+    int inscripcionesSize();
 
 };
 

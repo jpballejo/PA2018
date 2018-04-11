@@ -14,9 +14,16 @@
 #include "Clase.h"
 #include<string.h>
 #include <stdexcept>
-
+#include <iostream>
 /*Getters*/
 
+int Clase::inscripcionesSize(){
+    int i = 0;
+    for(i; i<MAX_Inscripcion;i++)
+        if(this->inscripciones[i] == NULL)
+            break;
+    return i;
+}
 
 Inscripcion** Clase::getInscripcion() {
     return this->inscripciones;
@@ -50,17 +57,26 @@ bool Clase::socioEnClase(string ci) {
 }
 
 void Clase::setInscripcion(Inscripcion *inscripcion) {
-    int i = 0;
-    for (i; i < MAX_Inscripcion; i++) {
-        if (this->inscripciones[i] == NULL) {
-            this->inscripciones[i] = inscripcion;
-            break;
+    
+        if(this->cupo() > this->inscripcionesSize()){
+            int i = 0;
+            for (i; i < MAX_Inscripcion; i++) {
+                if (this->inscripciones[i] == NULL) {
+                    this->inscripciones[i] = inscripcion;
+                    break;
+                }
+            }
+            if (i == 50)
+                return throw std::invalid_argument("Maximo de inscripciones alcanzado");
         }
+        else{
+            return throw std::invalid_argument("El cupo ha sido alcanzado");
+        }
+    
+    
+    
 
-    }
-
-    if (i == 50)
-        return throw std::invalid_argument("Maximo de inscripciones alcanzado");
+    
 
 }
 
