@@ -156,7 +156,7 @@ void mostrarClaseS (){
             throw std::invalid_argument("No existe la clase");
 
         clase = &obtenerClase(idClase);
-                cout<<clase;
+                cout<<*clase;
    }catch (std::invalid_argument& ia){cout << ia.what();}
                 
 }
@@ -210,7 +210,7 @@ Fecha* armarFecha() {
     cout << "Ingrese el año: \n";
     cin>>anio;
     if (anio<1900 && anio>2018)
-        throw invalid_argument("Año incorrecto");
+        throw invalid_argument("Ell año no es correcto");
     Fecha * fech = new Fecha(dia, mes, anio);
 
     return fech;
@@ -479,8 +479,11 @@ void agregarSocio(string ci, string nombre) {
     try {
        
             Socio* s = new Socio(ci, nombre);
+            if (CantSocios >= MAX_SOCIOS)
+         throw std::invalid_argument("Tope de socios");
+            else{
             arreglo_socios[CantSocios]=s;
-            CantSocios++;
+            CantSocios++;}
     }
      catch (std::invalid_argument& ia) {
         cout << ia.what() << endl;

@@ -46,12 +46,12 @@ DtSpinning::DtSpinning(const DtSpinning& orig) {
 DtSpinning::~DtSpinning() {
 }
 
-ostream& operator<<(ostream& os,  DtSpinning& spin){
-   
-    os <<"\nID Empresa: "<<spin.getId()
-            <<"\nNombre: "<<spin.getNombre()
-            <<"\nTurno: "<<spin.getTurno()
-            << "Cantidad de bicicletas: " << spin.getCantBicicletas();
+ostream& operator<<(ostream& os,  const DtSpinning& spin){
+   // int id=spin.rid();
+    //os <<"\nID Empresa: "<<id;
+           // <<"\nNombre: "<<spin.getNombre()
+          //  <<"\nTurno: "<<spin.getTurno();
+           os << "Cantidad de bicicletas: " << spin.cantBicicletas;
     
     return os;
 }

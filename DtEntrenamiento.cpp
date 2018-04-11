@@ -43,17 +43,18 @@ DtEntrenamiento::DtEntrenamiento(const DtEntrenamiento& orig) {
 DtEntrenamiento::~DtEntrenamiento() {
 }
 
-ostream& operator<<(ostream& os, DtEntrenamiento& entrena){
+ostream& operator<<(ostream& os, const DtEntrenamiento& entrena){
     string r;
-    if(entrena.getEnRambla()){
+//    int id= entrena.rid();
+    if(entrena.enRambla){
         r="Si";
     }else {
         r="No";
     }
-    os <<"\nID Empresa: "<<entrena.getId()
-            <<"\nNombre: "<<entrena.getNombre()
-            <<"\nTurno: "<<entrena.getTurno()
-            <<"\nEn Rambla: " << r << endl;
+  //  os <<"\nID Empresa: "<<id;
+          //  <<"\nNombre: "<<entrena.getNombre()
+           // <<"\nTurno: "<<entrena.getTurno();
+            os<<"\nEn Rambla: " << r << endl;
     
     return os;
 }
