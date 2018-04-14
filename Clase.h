@@ -16,9 +16,10 @@
 #include<string>
 #include "eTurno.h"
 #include "Inscripcion.h"
+#include "DtSocio.h"
 
 #define MAX_Inscripcion 50
-
+#define CantIns 0
 
 using namespace std;
 
@@ -31,11 +32,13 @@ private:
 
 
 public:
+    DtSocio** getSocio(string ci);
+    Inscripcion * getPunteroInscripcion(int p);
     Clase(int, string, Turno);
     Clase();
     Clase(const Clase& orig);
     virtual ~Clase();
-
+   // void Delins (Inscripcion);
     /*Setters*/
     void setId(int);
     void setNombre(string);

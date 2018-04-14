@@ -13,10 +13,12 @@
 
 #include "DtEntrenamiento.h"
 #include <sstream>
+#include<ostream>
+#include<string>
 //void DtEntrenamiento::setEnRambla(bool enRambla){
 //    this->enRambla = enRambla;
 //}
-
+using namespace std;
 int DtEntrenamiento::getId(){
     return DtClase::getId();
 }

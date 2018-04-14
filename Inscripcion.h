@@ -18,11 +18,12 @@
 using namespace std;
 class Inscripcion {
 public:
+    DtSocio** infoSocio(Clase*);
     Inscripcion();
     Inscripcion(const Inscripcion& orig);
     ~Inscripcion();
     Inscripcion(Socio*,Fecha*);
-    
+//    Eliminar(const Inscripcion&);
     /*Getters*/
     
     Socio* getSocio();
