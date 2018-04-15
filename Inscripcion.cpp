@@ -12,15 +12,9 @@
  */
 
 #include "Inscripcion.h"
-#include "DtSocio.h"
+//#include "DtSocio.h"
 #include "Clase.h"
-DtSocio** Inscripcion::infoSocio(Clase * cla,int cantI){
-    Inscripcion**ins=new Inscripcion*[cantI](); 
-    for (int i =0;i>=MAX_Inscripcion;i++){
-        if(ins[i]->socio->getCI().compare(cla->getSocio()))    
-        ins[i]->socio->getNombre();}
-    //DtSocio ** soc = new DtSocio()
-}
+
 Socio* Inscripcion::getSocio(){
     return this->socio;
 }

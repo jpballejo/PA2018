@@ -117,15 +117,14 @@ int idClase=0;
 try{
         cout << "ID Clase: ";
         cin>>idClase;
-                arreglo_dtSocio = obtenerInfoSociosPorClase(idClase, CantSocios);
-                for (int i = 0; i < CantSocios; i++) {
-                    if (arreglo_dtSocio[i] != NULL) {
-                        cout << "Nombre: " + arreglo_dtSocio[i]->getNombre() + "\n";
-                        cout << "Cedula: " + arreglo_dtSocio[i]->getCi() + "\n";
-                    }
-                }
+        Clase * cla= existeClasep(idClase);
+        arreglo_dtSocio=obtenerInfoSociosPorClase(idClase,CantSocios);
+        for (int i = 0; i <= CantSocios; i++) {
+            cout << "Nombre: " + arreglo_dtSocio[i]->getNombre() + "\n";
+            cout << "Cedula: " + arreglo_dtSocio[i]->getCi() + "\n";
+        }
 
-} catch (std::invalid_argument &ia) {
+    } catch (std::invalid_argument &ia) {
         cout << ia.what() << endl;
     }
 
@@ -499,41 +498,19 @@ bool existeSocio(string CI) {
 
 
 DtSocio** obtenerInfoSociosPorClase(int idClase, int& cantSocios) {
-    
-    Clase* clase = NULL;
-    DtSocio** arreglo_soc = new DtSocio*[cantSocios]();
-  DtSocio* aux = new DtSocio("1","jp");
-    int i=0, cont =0, tam=0;
-    
-    clase = existeClasep(idClase);
-        if(clase==NULL)throw std::invalid_argument("No existe la clase ingresada");
-    tam=clase->inscripcionesSize();
-    for(i=0;i<=tam;i++){
-        Inscripcion* ins = clase->getPunteroInscripcion(i);
-        if (ins!=NULL){
-            clase->getSocio(ins->getSocio()->getCI());
-            cout<<"coso";
-            //Socio * soc=ins->getSocio();
-            //string nom = soc->getNombre();
-            //cout<<nom;
-            //DtSocio* aux = new DtSocio(ins->getSocio()->getCI(),ins->getSocio()->getNombre());
-            //arreglo_soc[cont]=aux; cont++;
-        }
-    }
-    
-    //for (i=0;i<= MAX_SOCIOS;i++){
-        
-      //  if(clase->socioEnClase(arreglo_socios[i]->getCI())==true){
-            
-            
-            //  DtSocio* aux= new DtSocio(arreglo_socios[i]->getCI(),arreglo_socios[i]->getNombre());
-           // arreglo_soc[cont]=aux;
-            //cont++;
-        //}
-        
-    //}
-            
+   
+       DtSocio ** arreglo_soc = new DtSocio*[cantSocios]();
+       Clase* clase = existeClasep(idClase);
+       if(clase!=NULL){
+            int tam=0;
+            for (int i=0;i<=MAX_SOCIOS;i++){
+                   if(clase->socioEnClase(arreglo_socios[i]->getCI())==true){
+                            DtSocio * aux =new DtSocio(arreglo_socios[i]->getCI(),arreglo_socios[i]->getNombre());
+                            arreglo_soc[tam]= aux;tam++;}                                                       }
+          }
+   // DtSocio** arreglo_soc = new DtSocio*[cantSocios]();
+             
   return arreglo_soc; 
-    
+     
   
-}
+        }

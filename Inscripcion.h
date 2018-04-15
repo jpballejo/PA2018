@@ -15,17 +15,17 @@
 #define INCRIPCION_H
 #include "Socio.h"
 #include "Fecha.h"
+//#include "DtSocio.h"
 using namespace std;
 class Inscripcion {
 public:
-    DtSocio** infoSocio(Clase*);
+//    DtSocio** infoSocio(Clase&,int);
     Inscripcion();
     Inscripcion(const Inscripcion& orig);
     ~Inscripcion();
     Inscripcion(Socio*,Fecha*);
 //    Eliminar(const Inscripcion&);
     /*Getters*/
-    
     Socio* getSocio();
     Fecha* getFecha();
     /*Setters*/

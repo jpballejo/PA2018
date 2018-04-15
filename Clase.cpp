@@ -25,16 +25,6 @@ int Clase::inscripcionesSize(){
             break;}
     return i;
 }
-DtSocio** Clase::getSocio(string ci){
-        for (int i = 0; i < MAX_Inscripcion; i++) {
-        if (this->inscripciones[i] != NULL && this->inscripciones[i]->getSocio()->getCI().compare(ci) == 0) {
-           DtSocio** soc = new DtSocio*(this->inscripciones[i]->getSocio()->getCI(),this->inscripciones[i]->getSocio()->getNombre());
-            return soc;
-        }
-    }
-
-
-}
 Inscripcion* Clase::getPunteroInscripcion(int p){
 this->inscripciones[p];}
 Inscripcion** Clase::getInscripcion() {
@@ -57,15 +47,17 @@ string Clase::getNombre() {
 
 
 bool Clase::socioEnClase(string ci) {
-    //Socio* np = NULL;
+   // Socio* np = NULL;
     for (int i = 0; i < MAX_Inscripcion; i++) {
-        if (this->inscripciones[i] != NULL && this->inscripciones[i]->getSocio()->getCI().compare(ci) == 0) {
-            //return this->inscripciones[i]->getSocio();
+     
+        if (this->inscripciones[i] != NULL&&inscripciones[i]->getSocio()->getCI().compare(ci)==0) {
             return true;
+          
         }
+        
     }
     return false;
-    //return np;
+    
 }
 
 void Clase::setInscripcion(Inscripcion *inscripcion) {
