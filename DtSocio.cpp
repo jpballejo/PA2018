@@ -14,13 +14,13 @@
 #include "DtSocio.h"
 
 
-void DtSocio::setCi(int CI){
-    this->CI = CI;
-}
-
-void DtSocio::setNombre(string nombre){
-    this->nombre = nombre;
-}
+//void DtSocio::setCi(int CI){
+//    this->CI = CI;
+//}
+//
+//void DtSocio::setNombre(string nombre){
+//    this->nombre = nombre;
+//}
 
 string DtSocio::getCi(){
     return this->CI;

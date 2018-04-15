@@ -16,6 +16,7 @@
 #include<string>
 #include "eTurno.h"
 #include "Inscripcion.h"
+#include "DtSocio.h"
 
 #define MAX_Inscripcion 50
 
@@ -45,11 +46,13 @@ public:
     string getNombre();
     Turno getTurno();
     Inscripcion** getInscripcion();
+    DtSocio ** getInscriptos(int );
     bool socioEnClase(string ci);
     void setInscripcion(Inscripcion * inscripcion);
     /*Extra functions belonging to this class*/
     virtual int cupo() = 0;
     int inscripcionesSize();
+    void borroInscricion(string);
 
 };
 

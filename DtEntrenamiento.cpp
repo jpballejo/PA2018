@@ -55,7 +55,7 @@ ostream& operator<<(ostream& os, DtEntrenamiento*& entrena){
         r="No";
     }
 
-    os <<"\nID Empresa: "<<entrena->getId()
+    os <<"\nID de Clase: "<<entrena->getId()
             <<"\nNombre: "<<entrena->getNombre()
             <<"\nTurno: "<<entrena->getTurnoS()
             <<"\nEn Rambla: " << r << endl;

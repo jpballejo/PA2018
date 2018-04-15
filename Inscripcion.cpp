@@ -36,8 +36,6 @@ Inscripcion::Inscripcion(const Inscripcion& orig) {
 }
 
 Inscripcion::~Inscripcion() {
-    delete this->socio;
-    delete this->fecha;
 }
 
 Inscripcion::Inscripcion(Socio* socio, Fecha* fech) {

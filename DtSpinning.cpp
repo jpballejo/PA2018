@@ -52,7 +52,7 @@ DtSpinning::~DtSpinning() {
 
 ostream& operator<<(ostream& os,  DtSpinning*& spin){
    
-    os <<"\nID Empresa: "<<spin->getId()
+    os <<"\nID de Clase: "<<spin->getId()
             <<"\nNombre: "<<spin->getNombre()
             <<"\nTurno: "<<spin->getTurnoS() 
             << "\nCantidad de bicicletas: " << spin->getCantBicicletas()<< endl;

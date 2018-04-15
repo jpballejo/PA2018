@@ -14,6 +14,9 @@
 #ifndef FECHA_H
 #define FECHA_H
 
+#include<string.h>
+#include<stdio.h>
+#include <iostream>
 class Fecha {
 public:
     Fecha (int,int,int);

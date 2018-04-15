@@ -18,11 +18,13 @@
 /*Getters*/
 
 int Clase::inscripcionesSize(){
-    int i = 0;
-    for(i; i<MAX_Inscripcion;i++)
-        if(this->inscripciones[i] == NULL)
+    int j;
+    for(int i = 0; i<MAX_Inscripcion;i++)
+        if(this->inscripciones[i] == NULL){
+            j=i;
             break;
-    return i;
+        }
+    return j;
 }
 
 Inscripcion** Clase::getInscripcion() {
@@ -42,18 +44,13 @@ string Clase::getNombre() {
 }
 
 /*Setters*/
-
-
 bool Clase::socioEnClase(string ci) {
-    //Socio* np = NULL;
     for (int i = 0; i < MAX_Inscripcion; i++) {
         if (this->inscripciones[i] != NULL && this->inscripciones[i]->getSocio()->getCI().compare(ci) == 0) {
-            //return this->inscripciones[i]->getSocio();
             return true;
         }
     }
     return false;
-    //return np;
 }
 
 void Clase::setInscripcion(Inscripcion *inscripcion) {
@@ -120,3 +117,22 @@ Clase::~Clase() {
     }
 }
 
+DtSocio ** Clase::getInscriptos(int cantInscriptos){
+int j= 0;    
+    DtSocio **retorna = new DtSocio * [MAX_Inscripcion]();
+    for (int i = 0; i < MAX_Inscripcion; i++) {
+        if (inscripciones[i] != NULL ){
+        retorna[j] = new DtSocio(inscripciones[i]->getSocio()->getCI(),inscripciones[i]->getSocio()->getNombre());
+        j++;
+        }
+    }
+    return retorna;
+}
+
+void Clase::borroInscricion(string ci){
+    for (int i = 0; i < MAX_Inscripcion; i++) {
+        if(this->inscripciones[i] != NULL && this->inscripciones[i]->getSocio()->getCI().compare(ci) == 0)
+            this->inscripciones[i] = NULL ;
+    }
+    
+}

@@ -13,6 +13,8 @@
 
 #include "Fecha.h"
 
+using namespace std;
+
 int Fecha::getDia(){
     return this->dia;
 }
@@ -29,6 +31,10 @@ void Fecha::setDia(int dia){
     this->dia = dia;
 }
 Fecha::Fecha(int dia, int mes, int anio) {
+     if (mes < 1 || mes>12 && anio<1900 && dia<1 || dia>31 )
+        throw std::invalid_argument("Fecha mal ingresada");
+    
+     
     this->dia =dia;
     this->mes =mes;
     this->anio =anio;
