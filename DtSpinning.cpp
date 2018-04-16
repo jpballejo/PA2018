@@ -13,7 +13,9 @@
 
 #include "DtSpinning.h"
 #include<sstream>
-
+#include<ostream>
+#include<string>
+using namespace std;
 //void DtSpinning::setCantBicicletas(int cantBicicletas){
 //    this->cantBicicletas = cantBicicletas;
 //}

@@ -25,8 +25,8 @@ public:
     Socio(const Socio& orig);
     virtual ~Socio();
     /*Getters*/
-    string getNombre();
-    string getCI();
+ virtual   string getNombre();
+    virtual string getCI();
     /*Setters*/
     void setNombre(string);
     void setCI(string);

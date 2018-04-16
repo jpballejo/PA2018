@@ -16,6 +16,7 @@
 #include <stdexcept>
 #include <iostream>
 /*Getters*/
+using namespace std;
 
 int Clase::inscripcionesSize(){
     int j;
@@ -26,7 +27,8 @@ int Clase::inscripcionesSize(){
         }
     return j;
 }
-
+Inscripcion* Clase::getPunteroInscripcion(int p){
+this->inscripciones[p];}
 Inscripcion** Clase::getInscripcion() {
     return this->inscripciones;
 }
@@ -48,7 +50,9 @@ bool Clase::socioEnClase(string ci) {
     for (int i = 0; i < MAX_Inscripcion; i++) {
         if (this->inscripciones[i] != NULL && this->inscripciones[i]->getSocio()->getCI().compare(ci) == 0) {
             return true;
+          
         }
+        
     }
     return false;
 }
@@ -109,12 +113,14 @@ Clase::Clase(const Clase& orig) {
     this->id = orig.id;
     this->nombre = orig.nombre;
 }
+//Clase::Delins(Inscripcion ins){
+  //  delete ins;
+    
+    
+    
 
 Clase::~Clase() {
     
-    for (int i = 0; i < MAX_Inscripcion; i++) {
-        delete this->inscripciones[i];
-    }
 }
 
 DtSocio ** Clase::getInscriptos(int cantInscriptos){

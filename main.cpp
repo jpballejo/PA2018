@@ -34,6 +34,7 @@ using namespace std;
 int const MAX_SOCIOS = 10, MAX_CLASES = 10;
 int CantSocios = 0;
 int CantClases = 0;
+int Cant = 0;
 
 Socio* arreglo_socios[MAX_SOCIOS];
 Clase* arreglo_clases[MAX_CLASES];
@@ -76,7 +77,7 @@ Fecha* armarFecha();
 //Clase* tipoClase(DtClase& clase);
 
 int main(int argc, char** argv) {
-
+    
     for (int i = 0; i < MAX_SOCIOS; i++)
         arreglo_socios[i] = NULL;
 
@@ -120,6 +121,7 @@ int main(int argc, char** argv) {
 
 
     return 0;
+    
 }
 
 void infoSocio(){
@@ -172,15 +174,16 @@ DtSocio** obtenerInfoSociosPorClase(int idClase, int& cantSocios) {
 void mostrarClaseS (){
    DtClase* clase;
    int idClase=0;
-   try { 
-        cout << "ID Clase: ";
+   try{
+       
+       cout << "Ingrese el ID de Clase: ";
         cin>>idClase;
         
         clase = &obtenerClase(idClase);
         if (clase != NULL){
 
         if (DtSpinning* cla = dynamic_cast <DtSpinning *>(clase))
-                cout<<cla;
+            cout<<cla;
         if (DtEntrenamiento* cla = dynamic_cast <DtEntrenamiento *>(clase))
                 cout<<cla;
         }
@@ -194,6 +197,8 @@ void mostrarClaseS (){
 
 DtClase& obtenerClase(int idClase) {
 
+        if(existeClase(idClase)!=true)
+            throw std::invalid_argument("No existe la clase");
     Clase* clase = NULL;
     DtClase* resultado = NULL;
 
@@ -270,9 +275,8 @@ bool existeClase(int id) {
 void inscribirSocio() {
     int codClase=0;
     string ciS;
-
-    try {
-        cout << "Incribir Socio a clase:\n";
+    try{
+        cout << "Incribir Socio a clase\n";
         cout << "Ingrese la cedula:\n";
         cin>>ciS;
         cout << "Ingrese el codigo de la clase:\n";
@@ -363,7 +367,6 @@ try {
    }
 }
 void borrarInscripcion(string ciSocio, int idClase) {
-    Clase* clase = NULL;
 
     for (int i = 0; i < CantClases; i++)
         if (arreglo_clases[i] != NULL && arreglo_clases[i]->getId() == idClase) {
@@ -373,15 +376,13 @@ void borrarInscripcion(string ciSocio, int idClase) {
 }
     
 void pedirDatosClase() {
-    int id, optT;
-    string nombre;  
+    int id=0, optT=0, op=0,cantBici=0;;
+    string nombre=" ";  
     Turno t;
-
-    try {
+try{    
+    
         cout << "\nIngrese ID de la clase\n";
         cin>>id;
-        if (existeClase(id))
-            throw std::invalid_argument("El ID de la clase ya existe");
         cout << "\nIngrese nombre de la clase\n";
         cin>>nombre;        
         cout << "\nIngrese turno de la clase:\n1- Manana\n2- Tarde\n3- Noche\n";
@@ -399,45 +400,56 @@ void pedirDatosClase() {
             default:
                 break;
         }
-         DtClase* clase = new DtClase(id,nombre,t);
-        agregarClase(*clase);        
+        cout << "\nQue tipo de clase desea crear?\n1- Spinning\n2- Entrenamiento\n";
+        cin>>op;
+    if(op==1){
+        cout<<"Ingrese la cantidad de bicicletas: "<<endl;
+        cin>>cantBici;
+        if (existeClase(id))
+            throw std::invalid_argument("El ID de la clase ya existe");
+        
+        DtSpinning * DtSpin = new DtSpinning(id,nombre,t,cantBici);
+        agregarClase(*DtSpin);//y esto es necesario porque no es por referencia es por el coso 
+    }
+    if(op==2){cout << "El entrenamiento es en rambla?\n1- Si\n2- No\n";
+    cin>>op;
+    if(op==1){
+        if (existeClase(id))
+            throw std::invalid_argument("El ID de la clase ya existe");
+        
+        DtEntrenamiento * DtEntre = new DtEntrenamiento(id,nombre,t,true);
+        agregarClase(*DtEntre);
+    }
+    if(op==2){
+        DtEntrenamiento * DtEntre = new DtEntrenamiento(id,nombre,t,false);
+        agregarClase(*DtEntre);
+    }
+           
+    }
+    cout<<"\nClase ingresada con éxito\nPulse Intro para continuar...\n ";
+    cin>>op;
+              
     } catch (std::invalid_argument &ia) {
         cout << ia.what() << endl;
     }
 }
 
 void agregarClase(DtClase& clase) {
-    int optT, cantBicicletas;
-    bool enRambla;
-    Clase * claseMad;
-     
-cout << "\nQue tipo de clase desea crear?\n1- Spinning\n2- Entrenamiento\n";
-cin>>optT;
-    if (optT == 1) {
-        cout << "\nIngrese la cantidad de bicicletas\n";
-        cin>>cantBicicletas;
-        claseMad = new Spinning(clase.getId(), clase.getNombre(), clase.getTurno(), cantBicicletas);
-        //return claseSpinning;
-    } else if (optT == 2) {
-        cout << "El entrenamiento es en rambla?\n1- Si\n2- No\n";
-        cin>>optT;
-        if (optT == 1) {
-            claseMad = new Entrenamiento(clase.getId(), clase.getNombre(), clase.getTurno(), true);
-            //return claseEntrenamiento;
-        } else {
-            claseMad = new Entrenamiento(clase.getId(), clase.getNombre(), clase.getTurno(), false);
-         //return claseEntrenamiento;
+    Clase * claseDef;
+    
+        if (DtSpinning * DtSpin = dynamic_cast<DtSpinning*>(&clase))
+            claseDef = new Spinning(DtSpin->getId(),DtSpin->getNombre(),DtSpin->getTurno(),DtSpin->getCantBicicletas());
+        if (DtEntrenamiento * DtEntre = dynamic_cast<DtEntrenamiento*>(&clase))
+            claseDef = new Entrenamiento(DtEntre->getId(),DtEntre->getNombre(),DtEntre->getTurno(),DtEntre->getEnRambla());
+            
+        if(CantClases>= MAX_CLASES)
+                throw std::invalid_argument("Se llegó al Tope de Clases");
+            else{
+                arreglo_clases[CantClases]=claseDef;
+                CantClases++;
+            }   
         }
-    } else {
-        cout << "\nOpción incorrecta\n";
-    }
-if (CantClases >= MAX_CLASES)
-         throw std::invalid_argument("Tope de Clases");
-    else{
-        arreglo_clases[CantClases] = claseMad;
-        CantClases++;   
-    }       
-}
+       
 
 void datosSocio (){
  string ci, nombre;

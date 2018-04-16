@@ -12,6 +12,8 @@
  */
 
 #include "Inscripcion.h"
+//#include "DtSocio.h"
+#include "Clase.h"
 
 Socio* Inscripcion::getSocio(){
     return this->socio;
@@ -34,6 +36,7 @@ Inscripcion::Inscripcion() {
 
 Inscripcion::Inscripcion(const Inscripcion& orig) {
 }
+
 
 Inscripcion::~Inscripcion() {
 }
