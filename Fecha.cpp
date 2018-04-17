@@ -11,6 +11,8 @@
  * Created on March 19, 2018, 3:33 PM
  */
 
+#include <stdexcept>
+
 #include "Fecha.h"
 
 using namespace std;
@@ -31,10 +33,10 @@ void Fecha::setDia(int dia){
     this->dia = dia;
 }
 Fecha::Fecha(int dia, int mes, int anio) {
-     if (mes < 1 || mes>12 && anio<1900 && dia<1 || dia>31 )
-        throw std::invalid_argument("Fecha mal ingresada");
-    
-     
+    if( (mes < 1 || mes > 12) || (anio < 1900 ) || (dia < 1 || dia > 31) )
+        throw std::invalid_argument("\nFecha mal ingresada\n");
+     //if (mes < 1 || mes>12 && anio<1900 && dia<1 || dia>31 )
+     //   throw std::invalid_argument("Fecha mal ingresada");
     this->dia =dia;
     this->mes =mes;
     this->anio =anio;

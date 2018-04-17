@@ -28,7 +28,9 @@ int Clase::inscripcionesSize(){
     return j;
 }
 Inscripcion* Clase::getPunteroInscripcion(int p){
-this->inscripciones[p];}
+    this->inscripciones[p];
+}
+
 Inscripcion** Clase::getInscripcion() {
     return this->inscripciones;
 }

@@ -131,8 +131,10 @@ int idClase=0;
 try {
     cout << "ID Clase: ";
     cin>>idClase;
-    if(!existeClase(idClase))
-        cout<<"No existe la clase ingresada";
+    if(!existeClase(idClase)){
+        throw std::invalid_argument("No existe la clase");
+    }
+    else{
     
     arreglo_dtSocio = obtenerInfoSociosPorClase(idClase, CantSocios);
     if (arreglo_dtSocio != NULL){
@@ -148,6 +150,7 @@ try {
             cin.ignore().get();
        }
     }
+}
 catch (std::invalid_argument& ia) {
     cout<<ia.what();
 }
@@ -157,7 +160,7 @@ DtSocio** obtenerInfoSociosPorClase(int idClase, int& cantSocios) {
      DtSocio ** arreglo_socio = NULL;
      int cantInscriptos;
         
-    for(int i=0; i< cantSocios; i++){
+    for(int i=0; i < cantSocios; i++){
         if (arreglo_clases[i]!=NULL){
             
             if(arreglo_clases[i]->getId() == idClase){
@@ -272,10 +275,10 @@ void inscribirSocio() {
 void agregarInscripcion(string ci, int codC, Fecha* fecha) {
 Socio* soc = existeSociop(ci);
 Clase* clas = existeClasep(codC);
-    if (clas == NULL)
-        throw std::invalid_argument("No existe la clase");
     if (soc == NULL)
         throw std::invalid_argument("No existe el socio");
+    if (clas == NULL)
+        throw std::invalid_argument("No existe la clase");
     if (!clas->socioEnClase(ci)) {
         Inscripcion * ins = new Inscripcion(soc, fecha);
         clas->setInscripcion(ins);
@@ -328,16 +331,30 @@ Clase* clas = existeClasep(codC);
 void borrarSocio(){
     string ci="",op;
     int idClase;
-               
+    bool inscripto = false;
 try {
     cout << "\n Borrar Inscripción de un Socio \nCI Socio: ";
         cin>>ci;
         cout << "\nID Clase:";
         cin >> idClase;
-        if ((existeClase(idClase))!=false && (existeSocio(ci)!=false)){
-            borrarInscripcion(ci, idClase);
-            cout<<"Socio Borrado de La Clase\nPulse Intro para continuar...\n  ";
-            cin.ignore().get();
+        if ((existeClase(idClase)) != false && (existeSocio(ci) != false)){
+            /*Si la clase y el socio existen, el scoio debe estar inscripto en la clase*/
+            Clase* clas = existeClasep(idClase);
+            Inscripcion** insc = clas->getInscripcion();
+            int a = 0;
+            while(insc[a] != NULL ){
+                if(insc[a]->getSocio()->getCI().compare(ci) == 0){
+                    borrarInscripcion(ci, idClase);
+                    cout<<"Socio Borrado de La Clase\nPulse Intro para continuar...\n  ";
+                    cin.ignore().get();
+                    inscripto = true;
+                }
+                else{
+                    a++;
+                }
+            }
+            if(!inscripto)
+                throw std::invalid_argument("El socio no está inscripto en la clase");
         }
         else throw std::invalid_argument("El socio o la clase no existen"); 
    } catch (std::invalid_argument& ia) {
